@@ -1,16 +1,19 @@
 const express = require ("express");
 const morgan = require ("morgan");
-const cors =require ("cors");
-const Visit=require ("./model/visits");
+const cors = require("cors");
 
-const visitsRouter = require ("./routes/visitsRouter.js");
-const emailRouter=require('./routes/emailRouter.js');
-const checkRouter=require('./routes/checkRouter.js');
-const serviceRouter=require('./routes/serviceRouter.js');
-const feedbackRouter = require('./routes/feedbackRouter.js');
-const scheduleRouter = require('./routes/scheduleRouter.js');
 
-// const authRouter = require('./routes/authRouter.js');
+
+// const Visit=require ("./model/visits");
+
+// const visitsRouter = require ("./routes/visitsRouter.js");
+// const emailRouter=require('./routes/emailRouter.js');
+// const checkRouter=require('./routes/checkRouter.js');
+// const serviceRouter=require('./routes/serviceRouter.js');
+// const feedbackRouter = require('./routes/feedbackRouter.js');
+// const scheduleRouter = require('./routes/scheduleRouter.js');
+
+
 
 
 const mongoose = require('mongoose');
@@ -27,15 +30,14 @@ app.use(morgan("tiny"));
 app.use(express.json());
 
 
-app.use("/api/visits", visitsRouter);
-app.use("/api/email", emailRouter);
-app.use("/api/check-password", checkRouter);
-app.use("/api/service", serviceRouter);
-app.use("/api/feedback", feedbackRouter);
-app.use("/api/schedule", scheduleRouter);
+// app.use("/api/visits", visitsRouter);
+// app.use("/api/email", emailRouter);
+// app.use("/api/check-password", checkRouter);
+// app.use("/api/service", serviceRouter);
+// app.use("/api/feedback", feedbackRouter);
+// app.use("/api/schedule", scheduleRouter);
 
 
-// app.use("/api/user", authRouter);
 
 
 app.use((_, res) => {
@@ -47,13 +49,7 @@ app.use((err, req, res, next) => {
   res.status(status).json({ message });
 });
 
-// const initializeCounter = async () => {
-//   const existing = await Visit.findOne();
-//   if (!existing) {
-//     await new Visit({ count: 0 }).save();
-//   }
-// };
-// initializeCounter();
+
 
 mongoose.connect(DB_HOST)
 .then(()=>{

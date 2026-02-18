@@ -2,6 +2,7 @@
   "name": "node-rest-api",
   "scripts": {
     "start": "node ./app.js",
+   
     "dev": "nodemon ./app.js",
     "test": "jest"
   },
