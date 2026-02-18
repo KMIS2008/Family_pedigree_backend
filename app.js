@@ -3,6 +3,7 @@ const morgan = require ("morgan");
 const cors = require("cors");
 
 
+const personRouter = require("./routes/personRouter.js");
 
 // const Visit=require ("./model/visits");
 
@@ -12,7 +13,6 @@ const cors = require("cors");
 // const serviceRouter=require('./routes/serviceRouter.js');
 // const feedbackRouter = require('./routes/feedbackRouter.js');
 // const scheduleRouter = require('./routes/scheduleRouter.js');
-
 
 
 
@@ -29,6 +29,12 @@ app.use(morgan("tiny"));
 
 app.use(express.json());
 
+// Статичні файли
+// app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+app.use('/api/persons', personRouter);
+
+
 
 // app.use("/api/visits", visitsRouter);
 // app.use("/api/email", emailRouter);
@@ -36,8 +42,6 @@ app.use(express.json());
 // app.use("/api/service", serviceRouter);
 // app.use("/api/feedback", feedbackRouter);
 // app.use("/api/schedule", scheduleRouter);
-
-
 
 
 app.use((_, res) => {
@@ -48,7 +52,6 @@ app.use((err, req, res, next) => {
   const { status = 500, message = "Server error" } = err;
   res.status(status).json({ message });
 });
-
 
 
 mongoose.connect(DB_HOST)
